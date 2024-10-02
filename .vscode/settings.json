@@ -1,0 +1,15 @@
+{
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "symbols.folders.associations": {
+    "constants": "text",
+    "template": "folder-layout",
+    "data": "folder-database",
+    "hooks": "folder-target"
+  },
+}
