@@ -1,10 +1,10 @@
-import { Controller, Get } from '@nestjs/common'
+import { Controller, Get, Param } from '@nestjs/common'
 import { type Product, products } from 'src/core'
 
 @Controller('products')
 export class ProductController {
   @Get()
-  getProducts(): Product[] {
+  async getProducts(): Promise<Product[]> {
     return products.map(product => ({
       ...product,
       specifications: {
@@ -12,5 +12,11 @@ export class ProductController {
           product.specifications.highlightedSpecification,
       },
     }))
+  }
+
+  @Get(':id')
+  async gerProductById(@Param('id') id: string): Promise<Product | null> {
+    const product = products.find(product => product.id === +id)
+    return product ?? null
   }
 }
