@@ -4,14 +4,14 @@ import type { PrismaProvider } from 'src/db/prisma.provider'
 
 @Injectable()
 export class ProductPrisma {
-  constructor(readonly prisma: PrismaProvider) {}
+  constructor(readonly repo: PrismaProvider) {}
 
   async getProducts(): Promise<Product[]> {
-    return this.prisma.product.findMany() as any
+    return this.repo.product.findMany() as any
   }
 
   async getProductById(id: number): Promise<Product | null> {
-    const product = await this.prisma.product.findUnique({ where: { id } })
+    const product = await this.repo.product.findUnique({ where: { id } })
     return (product as any) ?? null
   }
 }

@@ -15,6 +15,7 @@ export class PrismaProvider
   onModuleInit() {
     this.$connect()
   }
+
   onModuleDestroy() {
     this.$disconnect()
   }
