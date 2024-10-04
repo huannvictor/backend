@@ -1,4 +1,33 @@
 GET http://localhost:4000/products
 
 ####
-GET http://localhost:4000/products/27
+GET http://localhost:4000/products/30
+
+###
+POST http://localhost:4000/products
+Content-Type: application/json
+
+{
+  "name": "Novo item",
+  "description": "lorem ipsum",
+  "brand": "HP",
+  "model": "Pavilion 15-dk0010",
+  "image": "https://firebasestorage.googleapis.com/v0/b/formacao-dev.appspot.com/o/lancamentos%2Fgam3rstore%2Fhp-pavilion-dk0010.png?alt=media&token=6f0d7c8d-0612-4ca9-9ee8-1849971ae8c4",
+  "rate": 4,
+  "videoReview": "https://www.youtube.com/embed/dCvvugSjnZ4?si=zOMGbydgNdkB9QwY",
+  "tags": [],
+  "basePrice": 5499.99,
+  "promotionalPrice": 4999.99,
+  "lowestPrice": 4133,
+  "highestPrice": 7990.9,
+  "averagePrice": 5107.9,
+  "specifications": {
+    "highlightedSpecification": "NVIDIA GeForce GTX 1650",
+    "Processador": "Intel Core i5-9300H",
+    "Memória": "8GB DDR4",
+    "Armazenamento": "256GB SSD",
+    "Placa de Vídeo": "NVIDIA GeForce GTX 1650",
+    "Tela": "15.6 polegadas Full HD",
+    "Peso": "2.25 Kg"
+  }
+}

@@ -1,17 +1,26 @@
 import { Injectable } from '@nestjs/common'
+// biome-ignore lint/style/useImportType: <explanation>
+import { PrismaProvider } from 'src/db/prisma.provider'
 import type { Product } from 'src/core'
-import type { PrismaProvider } from 'src/db/prisma.provider'
 
 @Injectable()
 export class ProductPrisma {
-  constructor(readonly repo: PrismaProvider) {}
+  constructor(readonly prisma: PrismaProvider) {}
+
+  async save(product: Product): Promise<void> {
+    await this.prisma.product.upsert({
+      where: { id: product.id ?? -1 },
+      update: product,
+      create: product,
+    })
+  }
 
   async getProducts(): Promise<Product[]> {
-    return this.repo.product.findMany() as any
+    return this.prisma.product.findMany() as any
   }
 
   async getProductById(id: number): Promise<Product | null> {
-    const product = await this.repo.product.findUnique({ where: { id } })
+    const product = await this.prisma.product.findUnique({ where: { id } })
     return (product as any) ?? null
   }
 }
