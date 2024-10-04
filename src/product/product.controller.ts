@@ -1,5 +1,5 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common'
-import { products, type Product } from 'src/core'
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common'
+import type { Product } from 'src/core'
 // biome-ignore lint/style/useImportType: <explanation>
 import { ProductPrisma } from './product.prisma'
 
@@ -25,9 +25,14 @@ export class ProductController {
   }
 
   @Get(':id')
-  async gerProductById(@Param('id') id: string): Promise<Product | null> {
+  async getProductById(@Param('id') id: string): Promise<Product | null> {
     return this.repo.getProductById(Number(id))
     // const product = products.find(product => product.id === Number(id))
     // return product ?? null
+  }
+
+  @Delete(':id')
+  async deleteProduct(@Param('id') id: string): Promise<void> {
+    return this.repo.delete(Number(id))
   }
 }

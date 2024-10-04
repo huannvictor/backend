@@ -23,4 +23,8 @@ export class ProductPrisma {
     const product = await this.prisma.product.findUnique({ where: { id } })
     return (product as any) ?? null
   }
+
+  async delete(id: number): Promise<void> {
+    await this.prisma.product.delete({ where: { id } })
+  }
 }
