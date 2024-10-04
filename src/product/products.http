@@ -1,7 +1,7 @@
 GET http://localhost:4000/products
 
 ####
-GET http://localhost:4000/products/30
+GET http://localhost:4000/products/29
 
 ###
 POST http://localhost:4000/products
@@ -31,3 +31,6 @@ Content-Type: application/json
     "Peso": "2.25 Kg"
   }
 }
+
+###
+DELETE http://localhost:4000/products/29
